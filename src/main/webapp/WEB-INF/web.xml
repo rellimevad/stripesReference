@@ -10,23 +10,6 @@
             <param-name>ActionResolver.Packages</param-name>
             <param-value>com.example.action</param-value>
         </init-param>
-        <!--<init-param>-->
-            <!--<param-name>Extension.Packages</param-name>-->
-            <!--<param-value>com.example.ext,-->
-                <!--org.stripesstuff.stripersist,-->
-                <!--org.stripesstuff.plugin.security-->
-            <!--</param-value>-->
-        <!--</init-param>-->
-        <!--<init-param>-->
-            <!--<param-name>ActionBeanContent.Class</param-name>-->
-            <!--<param-value>com.example.ext.DaycareContext</param-value>-->
-        <!--</init-param>-->
-        <!--<init-param>-->
-        <!--<param-name>SecurityManager.Class</param-name>-->
-        <!--<param-value>-->
-        <!--com.example.nonext.ExampleSecurityManager-->
-        <!--</param-value>-->
-        <!--</init-param>-->
     </filter>
 
     <servlet>
