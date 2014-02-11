@@ -6,5 +6,6 @@ This is a simple project for reference and testing. Uses TestNG for testing and 
 
 Branches:
 * master: Stripes in its simplest form
-* hibernate4: stripersist + Hibernate 4
+* stripersist: stripersist + Hibernate 4
 * custom_context: Using a custom ActionBeanContext
+* stripes-security: simple stripes security example
