@@ -24,7 +24,7 @@ public class TestFixture {
     }
 
     public static MockServletContext getServletContext() {
-        TestFixture.setupNonTrivialObjects();
+        TestFixture.setupNonTrivialObjects(); // this shouldn't be necessary, annotation should take care of initializing
         return TestFixture.ctx;
     }
 
