@@ -32,7 +32,7 @@ dependencies {
 
     compile 'net.sourceforge.stripes:stripes:1.5.7'
     compile 'com.servlets:cos:05Nov2002'
-    compile 'org.testng:testng:6.8.7'
+    testCompile 'org.testng:testng:6.8.7'
     providedCompile "javax.servlet:servlet-api:2.4"
     providedCompile "javax.servlet:jsp-api:2.0"
     compile 'javax.servlet:jstl:1.2'
