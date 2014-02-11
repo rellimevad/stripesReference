@@ -1,18 +1,18 @@
 package com.example.action;
 
-
+import com.example.ext.MyActionBeanContext;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
 
 public abstract class MainActionBean implements ActionBean {
 
-    private ActionBeanContext ctx;
+    private MyActionBeanContext ctx;
 
-    public ActionBeanContext getContext() {
+    public MyActionBeanContext getContext() {
         return ctx;
     }
 
     public void setContext(ActionBeanContext ctx) {
-        this.ctx = ctx;
+        this.ctx = (MyActionBeanContext) ctx;
     }
 }

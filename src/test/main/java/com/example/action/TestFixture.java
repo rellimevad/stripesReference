@@ -17,6 +17,7 @@ public class TestFixture {
         TestFixture.ctx = new MockServletContext("test");
         Map<String, String> filterParams = new HashMap<>();
         filterParams.put("ActionResolver.Packages", "com.example.action");
+        filterParams.put("Extension.Packages", "com.example.ext");
         ctx.addFilter(StripesFilter.class, "StripesFilter", filterParams);
 
         ctx.setServlet(DispatcherServlet.class, "StripesDispatcher", null);

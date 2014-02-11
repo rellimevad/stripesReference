@@ -1,6 +1,5 @@
 package com.example.action;
 
-
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 
