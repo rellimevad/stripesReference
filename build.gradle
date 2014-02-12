@@ -2,6 +2,11 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'idea'
 
+test {
+    useTestNG()
+    scanForTestClasses = true
+}
+
 sourceSets {
     main {
         java {
@@ -13,15 +18,28 @@ sourceSets {
     }
     test {
         java {
-            srcDir 'test/main/java'
+            srcDir 'src/test/java'
         }
         resources {
-            srcDir 'test/main/resources'
+            srcDir 'src/test/resources'
         }
     }
 }
 
+gradle.taskGraph.whenReady { taskGraph ->
+    if ( taskGraph.hasTask(buildProductionWar) ) {
+        sourceSets.main.resources.srcDirs = [ 'src/main/resources/production' ]
+    }
+    else if ( taskGraph.hasTask(buildTestWar) ) {
+        sourceSets.main.resources.srcDirs = [ 'src/main/resources/test' ]
+    }
+    else {
+        sourceSets.main.resources.srcDirs = [ 'src/main/resources/development' ]
+    }
+}
+
 repositories {
+    flatDir { dirs "lib" } // stripersist is not in any maven repo I'm aware of
     maven {
         url "http://repository.apache.org/snapshots/"
     }
@@ -32,8 +50,21 @@ dependencies {
 
     compile 'net.sourceforge.stripes:stripes:1.5.7'
     compile 'com.servlets:cos:05Nov2002'
-    compile 'org.testng:testng:6.8.7'
+    testCompile 'org.testng:testng:6.8.7'
+
+    compile 'org.stripesstuff:stripersist:1.0'
+//    compile 'org.stripesstuff:stripesstuff:0.4.1'
+    compile 'javax.annotation:jsr250-api:1.0'
+    compile 'org.hibernate:hibernate-core:4.3.0.Final'
+    compile 'org.hibernate:hibernate-entitymanager:4.3.0.Final'
+    compile 'org.hibernate:hibernate-c3p0:4.3.0.Final'
+    compile 'mysql:mysql-connector-java:5.1.28'
+
     providedCompile "javax.servlet:servlet-api:2.4"
     providedCompile "javax.servlet:jsp-api:2.0"
     compile 'javax.servlet:jstl:1.2'
 }
+
+task buildProductionWar(dependsOn: war) { }
+
+task buildTestWar(dependsOn: war) { }
